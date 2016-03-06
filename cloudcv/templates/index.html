@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CloudCV Upload Image</title>
+</head>
+<body>
+
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
+<nav class="teal" style="padding-left: 20px; margin-bottom: 50px;">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">CloudCV</a>
+    </div>
+</nav>
+
+<div class="container">
+<h5>Upload an Image here</h5><br>
+	
+	<!-- Upload Image form -->
+	<form method="post" action="{% url 'display'  %}" enctype="multipart/form-data">{% csrf_token %}
+    	<div class="file-field input-field">
+      		<div class="btn">
+        		<span>IMAGE</span>
+        		<input name="uploaded_image" type="file">
+      		</div>
+      		<div class="file-path-wrapper">
+        		<input class="file-path validate" placeholder="Upload the image that you want to be processed" type="text">
+      		</div>
+    	</div>
+    	<div class="file-path-wrapper">
+        	<input type="submit" value="UPLOAD">
+      	</div>
+  	</form>	
+</div>
+
+
+</body>
+</html>
