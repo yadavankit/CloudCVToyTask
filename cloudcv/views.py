@@ -5,7 +5,7 @@ from django.shortcuts import render_to_response
 from django.views.decorators.csrf import csrf_exempt
 from .forms import ImageUploadForm
 from .models import SourceImage
-import cv2
+from . import image_processes
 
 ################################################
 # Index View
@@ -21,8 +21,11 @@ def index(request):
 
 @csrf_exempt
 def upload_image(request):
+	pic_name = request.FILES['uploaded_image'].name
+	pic_address = "/Users/WARL0CK/python/CloudCVToyTask/media/" + pic_name
 	upload_form = ImageUploadForm(request.FILES)
 	uploaded_image =  SourceImage(pic = request.FILES['uploaded_image'])
-	p.save()
+	uploaded_image.save()
+	image_processes.make_grayscale(pic_name, pic_address)
 	return render(request, "display.html")
 
