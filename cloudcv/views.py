@@ -27,5 +27,6 @@ def upload_image(request):
 	uploaded_image =  SourceImage(pic = request.FILES['uploaded_image'])
 	uploaded_image.save()
 	image_processes.make_grayscale(pic_name, pic_address)
+	image_processes.make_cannyedge(pic_name, pic_address)
 	return render(request, "display.html")
 
