@@ -21,8 +21,10 @@ def index(request):
 
 @csrf_exempt
 def upload_image(request):
-	pic_name = request.FILES['uploaded_image'].name
-	pic_address = "/Users/WARL0CK/python/CloudCVToyTask/media/" + pic_name
+	#pic_name = request.FILES['uploaded_image'].name
+	request.FILES['uploaded_image'].name = "uploaded.jpeg"
+	pic_name = "uploaded.jpeg"
+	pic_address = "/Users/WARL0CK/python/CloudCVToyTask/media/uploaded.jpeg"
 	upload_form = ImageUploadForm(request.FILES)
 	uploaded_image =  SourceImage(pic = request.FILES['uploaded_image'])
 	uploaded_image.save()
